@@ -23,8 +23,8 @@ public class CubeSpawner : MonoBehaviour
 
     private void CalculateCubesCount()
     {
-        _smallCubesCount = _levelInfo.TotalCubes % 27;
-        _bigCubesCount = _levelInfo.TotalCubes / 27;
+        _smallCubesCount = _levelInfo.TotalCubes % _bigCubeTemplate.CubeSize;
+        _bigCubesCount = _levelInfo.TotalCubes / _bigCubeTemplate.CubeSize;
     }
 
     private IEnumerator SpawnAllCubes()
