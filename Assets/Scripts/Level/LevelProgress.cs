@@ -11,7 +11,6 @@ public class LevelProgress : MonoBehaviour
     private int _destroyedCubes;
 
     public int CompletedCubes => _completedCubes;
-    public int DestroyedCubes => _destroyedCubes;
 
     public event UnityAction CompletedCubesCountChanged;
     public event UnityAction ImageComplete;

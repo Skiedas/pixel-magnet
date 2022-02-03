@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class Rail : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private RailMover _mover;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public RailMover Mover => _mover;
 }

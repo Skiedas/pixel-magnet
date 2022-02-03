@@ -27,12 +27,6 @@ public class Cube : MonoBehaviour
         _interactable = GetComponent<InteractableItem>();
     }
 
-    private void OnDestroy()
-    {
-        Instantiate(_sparkles, transform.position, Quaternion.identity);
-        Destroyed?.Invoke(this);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (_cell == null)
@@ -49,6 +43,12 @@ public class Cube : MonoBehaviour
                 other.enabled = false;
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(_sparkles, transform.position, Quaternion.identity);
+        Destroyed?.Invoke(this);
     }
 
     private IEnumerator PlaceCube(GameObject cell)

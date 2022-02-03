@@ -12,31 +12,15 @@ public class RailMover : MonoBehaviour
     [SerializeField] private float _minXPosition;
     [SerializeField] private float _maxXPosition;
 
-    private void Update()
+    public void MoveRail(float vertical)
     {
-        if (Input.GetKey(KeyCode.A) && _magnet.position.x > _minXPosition)
-        {
-            Move(_magnet, Vector3.left);
-        }
-
-        if (Input.GetKey(KeyCode.D) && _magnet.position.x < _maxXPosition)
-        {
-            Move(_magnet, Vector3.right);
-        }
-
-        if (Input.GetKey(KeyCode.W) && transform.position.z < _maxZPosition)
-        {
-            Move(transform, Vector3.forward);
-        }
-
-        if (Input.GetKey(KeyCode.S) && transform.position.z > _minZPosition)
-        {
-            Move(transform, Vector3.back);
-        }
+        transform.position += vertical * Vector3.forward * _speed * Time.deltaTime;
+        transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Clamp(transform.position.z, _minZPosition, _maxZPosition));
     }
 
-    private void Move(Transform movedItem, Vector3 direction)
+    public void MoveMagnet(float horizontal)
     {
-        movedItem.position += direction * _speed * Time.deltaTime;
+        _magnet.position += horizontal * Vector3.right * _speed * Time.deltaTime;
+        _magnet.position = new Vector3(Mathf.Clamp(_magnet.position.x, _minXPosition, _maxXPosition), _magnet.position.y, _magnet.position.z);
     }
 }

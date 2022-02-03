@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField] private Rail _rail;
+
     private void Update()
     {
         if (Input.GetMouseButton(0))
@@ -25,6 +27,14 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
-        Debug.DrawRay(Camera.main.ScreenPointToRay(Input.mousePosition).origin, Camera.main.ScreenPointToRay(Input.mousePosition).direction * 100, Color.yellow);
+        if(Input.GetAxis("Vertical") != 0)
+        {
+            _rail.Mover.MoveRail(Input.GetAxis("Vertical"));
+        }
+
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            _rail.Mover.MoveMagnet(Input.GetAxis("Horizontal"));
+        }
     }
 }

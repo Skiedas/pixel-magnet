@@ -6,7 +6,7 @@ public class CustomSizeCube : MonoBehaviour
 {
     [SerializeField] private Cube[] _cubes;
 
-    public int TotalCubes => _cubes.Length;
+    public int CubeSize => _cubes.Length;
 
     public Cube GetCube(int number)
     {
