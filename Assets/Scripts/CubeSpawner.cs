@@ -33,7 +33,7 @@ public class CubeSpawner : MonoBehaviour
         {
             var bigCube = Instantiate(_bigCubeTemplate, _spawnArea.GetRandomPosition(), Quaternion.identity);
 
-            for (int j = 0; j < bigCube.TotalCubes; j++)
+            for (int j = 0; j < bigCube.CubeSize; j++)
             {
                 var cube = bigCube.GetCube(j);
                 cube.Completed += OnCubeCompleted;

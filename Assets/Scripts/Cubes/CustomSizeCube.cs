@@ -6,16 +6,8 @@ public class CustomSizeCube : MonoBehaviour
 {
     [SerializeField] private Cube[] _cubes;
 
-    private int _cubeSize;
+    public int CubeSize => _cubes.Length;
 
-    public int TotalCubes => _cubes.Length;
-    public int CubeSize => _cubeSize;
-
-
-    private void Awake()
-    {
-        _cubeSize = (int)Mathf.Sqrt(TotalCubes);
-    }
 
     public Cube GetCube(int number)
     {

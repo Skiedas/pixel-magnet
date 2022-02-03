@@ -140,7 +140,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _CellColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0.43867922, b: 0.43867922, a: 0.86572075}
+    - _Color: {r: 1, g: 0.43867922, b: 0.43867922, a: 0.7657751}
     - _Color1: {r: 0, g: 0.7, b: 0.74, a: 0}
     - _Color2: {r: 0.97, g: 0.67, b: 0.51, a: 0}
     - _ColorDim: {r: 1, g: 0, b: 0, a: 1}
