@@ -32,6 +32,6 @@ public class ProgressBar : MonoBehaviour
 
     private void ChangeSliderValue()
     {
-        _slider.value = _levelInfo.Progress.CompletedCubes / (_levelInfo.TotalCubes * 1f);
+        _slider.value = (float)_levelInfo.Progress.CompletedCubes / (_levelInfo.TotalCubes);
     }
 }

@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class PlayerInput : MonoBehaviour
 {
+    private const string Vertical = "Vertical";
+    private const string Horizontal = "Horizontal";
+
     [SerializeField] private Rail _rail;
 
     private void Update()
@@ -27,14 +30,14 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
-        if(Input.GetAxis("Vertical") != 0)
+        if(Input.GetAxis(Vertical) != 0)
         {
-            _rail.Mover.MoveRail(Input.GetAxis("Vertical"));
+            _rail.Mover.MoveRail(Input.GetAxis(Vertical));
         }
 
-        if (Input.GetAxis("Horizontal") != 0)
+        if (Input.GetAxis(Horizontal) != 0)
         {
-            _rail.Mover.MoveMagnet(Input.GetAxis("Horizontal"));
+            _rail.Mover.MoveMagnet(Input.GetAxis(Horizontal));
         }
     }
 }
