@@ -23,8 +23,16 @@ public class CubeSpawner : MonoBehaviour
 
     private void CalculateCubesCount()
     {
-        _smallCubesCount = _levelInfo.TotalCubes % 27;
-        _bigCubesCount = _levelInfo.TotalCubes / 27;
+        _smallCubesCount = _levelInfo.TotalCubes % _bigCubeTemplate.CubesCount;
+        _bigCubesCount = _levelInfo.TotalCubes / _bigCubeTemplate.CubesCount;
+    }
+
+    private void SpawnCube(Cube cubeTemplate)
+    {
+        var cube = Instantiate(cubeTemplate, _spawnArea.GetRandomPosition(), Quaternion.identity);
+        cube.Completed += OnCubeCompleted;
+        cube.Destroyed += OnCubeDestroyed;
+        _spawnedCubes.Add(cube);
     }
 
     private IEnumerator SpawnAllCubes()
@@ -33,12 +41,9 @@ public class CubeSpawner : MonoBehaviour
         {
             var bigCube = Instantiate(_bigCubeTemplate, _spawnArea.GetRandomPosition(), Quaternion.identity);
 
-            for (int j = 0; j < bigCube.CubeSize; j++)
+            for (int j = 0; j < bigCube.CubesCount; j++)
             {
-                var cube = bigCube.GetCube(j);
-                cube.Completed += OnCubeCompleted;
-                cube.Destroyed += OnCubeDestroyed;
-                _spawnedCubes.Add(cube);
+                SpawnCube(bigCube.GetCube(j));
             }
 
             yield return new WaitForSeconds(_spawnDelay);
@@ -46,10 +51,7 @@ public class CubeSpawner : MonoBehaviour
 
         for (int i = 0; i < _smallCubesCount; i++)
         {
-            var cube = Instantiate(_smallCubeTemplate, _spawnArea.GetRandomPosition(), Quaternion.identity);
-            cube.Completed += OnCubeCompleted;
-            cube.Destroyed += OnCubeDestroyed;
-            _spawnedCubes.Add(cube);
+            SpawnCube(_smallCubeTemplate);
             yield return new WaitForSeconds(_spawnDelay);
         }
     }
